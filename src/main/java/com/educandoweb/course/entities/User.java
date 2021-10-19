@@ -3,11 +3,20 @@ package com.educandoweb.course.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+@Entity
 public class User implements Serializable{ //interface usada para transformar os objetos em 
 											//cadeias de bytes, para que o objeto trafegue na rede, 
 											//seja gravado em arquivos e etc. 
 		
 	private static final long serialVersionUID = 1L;
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String email;
