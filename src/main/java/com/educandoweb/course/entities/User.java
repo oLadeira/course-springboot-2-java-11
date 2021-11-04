@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "tb_user")
@@ -28,7 +30,8 @@ public class User implements Serializable{ //interface usada para transformar os
 	private String phone;
 	private String password;
 	
-	@OneToMany(mappedBy = "client")
+	@JsonIgnore //corrigir associacao de mao dupla, explicacao no arquivo application.properties
+	@OneToMany(mappedBy = "client") //mesmo nome do atributo da outra tabela (tabela Order atributo client)
 	private List<Order> orders = new ArrayList<>();
 	
 	
